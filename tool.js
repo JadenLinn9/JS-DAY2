@@ -34,13 +34,3 @@ function phoneCheck(phone){
 
     return ret1;
 }
-
-<input type="button" value="Create!!" onclick = "createTWID()">
-
-<select>
-    <option value="台北市" id="10">台北市</option>
-    <option value="台北市" id="11">台北縣</option>
-</select>
-    <input type="button" value="Create!!" onclick="createTWIDByArea()">
-
-    <input type="button" value="Create!!" onclick="createTWIDByGender()"></input>

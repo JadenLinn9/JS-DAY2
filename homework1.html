@@ -1,21 +1,144 @@
-<select name="" id="area">
-        <option value="台北市" id="10">台北市</option>
-        <option value="台北縣" id="11">台北縣</option>
+<h1 align="center">身份證字號產生器</h1>
+<div>
+    隨機產生<input type="button" value="Create!!" onclick="createTWID()">
+    <div id="newID1"></div>
+</div>
+
+<div>
+    請選擇城市
+        <select name="" id="area2">
+                <option value="A">台北市</option>
+                <option value="B" selected>台中市</option>
+                <option value="C">基隆市</option>
+                <option value="D">台南市</option>
+                <option value="E">高雄市</option>
+                <option value="F">新北市</option>
+                <option value="G">宜蘭縣</option>
+                <option value="H">桃園市</option>
+                <option value="I">嘉義市</option>
+                <option value="J">新竹縣</option>
+                <option value="K">苗栗縣</option>
+                <option value="M">南投縣</option>
+                <option value="N">彰化縣</option>
+                <option value="O">新竹市</option>
+                <option value="P">雲林縣</option>
+                <option value="Q">嘉義縣</option>
+                <option value="T">屏東縣</option>
+                <option value="U">花蓮縣</option>
+                <option value="V">台東縣</option>
+                <option value="W">金門縣</option>
+                <option value="X">澎湖縣</option>
+                <option value="Z">連江縣</option>
+                <option value="L">台中縣</option>
+                <option value="R">台南縣</option>
+                <option value="S">高雄縣</option>
+                <option value="Y">陽明山管理局</option>
+            </select>
+            <input type="button"  value="create!!" onclick="createTWIDByArea()">
+            <div id="newID2"></div>
+</div>
+
+<div>
+    請選擇性別
+        <select name="" id="gender3">
+                <option value="1" selected>Male</option>
+                <option value="2">Female</option>
+            </select>
+            <input type="button"  value="create!!" onclick="createTWIDByGender()">
+            <div id="newID3"></div>
+</div>
+<div>
+    請選擇城市及性別
+<select name="" id="area4">
+        <option value="A">台北市</option>
+        <option value="B" selected>台中市</option>
+        <option value="C">基隆市</option>
+        <option value="D">台南市</option>
+        <option value="E">高雄市</option>
+        <option value="F">新北市</option>
+        <option value="G">宜蘭縣</option>
+        <option value="H">桃園市</option>
+        <option value="I">嘉義市</option>
+        <option value="J">新竹縣</option>
+        <option value="K">苗栗縣</option>
+        <option value="M">南投縣</option>
+        <option value="N">彰化縣</option>
+        <option value="O">新竹市</option>
+        <option value="P">雲林縣</option>
+        <option value="Q">嘉義縣</option>
+        <option value="T">屏東縣</option>
+        <option value="U">花蓮縣</option>
+        <option value="V">台東縣</option>
+        <option value="W">金門縣</option>
+        <option value="X">澎湖縣</option>
+        <option value="Z">連江縣</option>
+        <option value="L">台中縣</option>
+        <option value="R">台南縣</option>
+        <option value="S">高雄縣</option>
+        <option value="Y">陽明山管理局</option>
     </select>
-<select name="" id="gender">
-        <option value="male" id="80">Male</option>
-        <option value="female" id="81">Female</option>
+<select name="" id="gender4">
+        <option value="1" selected>Male</option>
+        <option value="2">Female</option>
     </select>
     <input type="button" value="Create!!" onclick="createTWIDByAll()">
+    <div id="newID4"></div>
+</div>
+
+<script src="tool.js"></script>
 
 <script>
+    function createTWID(){
+        let areaList = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+        let index = parseInt(Math.random()*areaList.length);
+        let area = areaList[index];
+        let gender = parseInt(Math.random()*2+1);
+        let r = parseInt(Math.random()*99999999);
+        let id = area + gender + r;
+        if (checkTWID(id)){
+         document.getElementById('newID1').innerHTML = id;
+    }else{
+        createTWID();
+    }
+    }
+
+
+    function createTWIDByArea(){
+        let area = document.getElementById('area2').value;
+        let gender = parseInt(Math.random()*2+1);
+        let r = parseInt(Math.random()*99999999);
+        let id = area + gender + r;
+        if (checkTWID(id)){
+         document.getElementById('newID2').innerHTML = id;
+    }else{
+        createTWIDByArea();
+    }
+    }
+
+    function createTWIDByGender(){
+        let areaList = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+        let index = parseInt(Math.random()*areaList.length);
+        let area = areaList[index];
+        let gender = document.getElementById('gender3').value;
+        let r = parseInt(Math.random()*99999999);
+        let id = area + gender + r;
+        if (checkTWID(id)){
+         document.getElementById('newID3').innerHTML = id;
+    }else{
+        createTWIDByGender();
+    }
+    }
+
      function createTWIDByAll() {
-     let area = document.getElementById('area').value;
-     let gender = document.getElementById('gender').value;
-     if (area = 'female'){
-         alert('ada');
-     }else if(area = 'male'){
-         alert('bb');
-     }
+     let area = document.getElementById('area4').value;
+     let gender = document.getElementById('gender4').value;
+     let r = parseInt(Math.random()*99999999);
+     let id = area + gender + r; 
+     if (checkTWID(id)){
+         document.getElementById('newID4').innerHTML = id;
+    }else{
+        createTWIDByAll();
+    }
 }
+
 </script>
